@@ -1,11 +1,31 @@
 const parentdiv = document.querySelector('#parent')
 
+var tasklist = [] //Lista para as tasks
+var checkmsg = [] //Lista para msg
+
 function Add(){
+    
+    tasklist.push(0)
 
-    var tasklist = [0]
+    if(tasklist.length >= 6 == true && checkmsg.includes(0) == false){
+        
+        checkmsg.push(0) //Coloca um zero na lista e sinaliza que a msg já foi acionada uma vez
 
-    if(tasklist.length == 2)return;
-    tasklist.push(1)
+        var newelement = document.createElement('p')
+        newelement.innerHTML = 'Maximum number of task reached'
+
+        newelement.style.color = 'red'
+        newelement.style.fontSize = '12px'
+        parentdiv.appendChild(newelement)
+
+        setTimeout(() =>{
+            parentdiv.removeChild(newelement)
+            checkmsg.pop() //Retira o zero dps de 3seg, e deixa disponível para que a mensagem aparece novamente
+        }, 2000)
+        
+    }
+
+    if(tasklist.length >= 6 == true)return;//Impede que haja mais de 5 tasks, controlando tudo pela lista
 
     var input = document.querySelector('#text')
     var convert = String(input.value)
@@ -16,13 +36,11 @@ function Add(){
     //Não precisa do QuerySelector nem do SetAttribute, por algum motivo dá erro
 
     function default1(n){
-         n.style.height = '45px'
-    n.style.width = '33px'
-    n.style.borderRadius = '3px'
+         n.style.height = '35px'
+    n.style.width = '35px'
+    n.style.borderRadius = '30%'
     n.style.backgroundColor = 'white'
     n.style.position = 'absolute'
-    n.style.marginTop = '-45px'
-    n.style.marginLeft = '145px'
     n.style.color = '#0077ff'
     n.style.border = '1px solid #0077ff'
     n.style.cursor = 'pointer'
@@ -30,9 +48,12 @@ function Add(){
     }
 
     default1(del)
+    del.style.marginLeft = '110px'
+    del.style.marginTop = '-41px'
+    
     default1(edit)
-
-    edit.style.marginLeft = '109px'
+    edit.style.marginLeft = '150px'
+    edit.style.marginTop = '-41px'
    
     task.style.marginLeft = '21px'
     task.style.backgroundColor = '#d8d8d87e'
@@ -41,31 +62,25 @@ function Add(){
     task.style.width = '276px'
     task.style.textAlign = 'center'
     task.style.fontSize = '12px'
+    task.style.position = 'relative'
 
     task.innerText = `${convert}`
-    del.innerText = '✕'
-    edit.innerText = '✎'
+    del.innerText = 'Del'
+    edit.innerText = 'Edit'
 
     parentdiv.appendChild(task)
     parentdiv.appendChild(del)
     parentdiv.appendChild(edit)
 
-    task.setAttribute('id', 'findtask')
-    var findtask = document.querySelector('#findtask')
-
-    del.setAttribute('id', 'finddel')
-    var finddel = document.querySelector('#finddel') 
-
-    edit.setAttribute('id', 'findedit')
-    var findedit = document.querySelector('#findedit') 
-
     del.addEventListener('click', function(){
-        findtask.remove()
-        findedit.remove()
-        finddel.remove()
-        return
+        parentdiv.removeChild(task)
+        parentdiv.removeChild(del)
+        parentdiv.removeChild(edit)
+        tasklist.pop()
+        tasklist.unshift()
     })
-    console.log(tasklist.length)
-    console.log(tasklist)
-}
 
+    edit.addEventListener('click', function(){
+
+    })
+}

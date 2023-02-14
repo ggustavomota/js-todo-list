@@ -27,6 +27,11 @@ div{
     width: 270px;
     height: 30px;
     border: 2px solid rgb(0, 119, 255);
+    outline: none;
+}
+
+#text::-webkit-input-placeholder{
+    padding-left: 10px;
 }
 
 #go{
