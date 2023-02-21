@@ -1,7 +1,7 @@
 body{
     margin: 0px;
     padding: 0px;
-    background: linear-gradient(to right, rgb(0, 119, 255), rgb(1, 111, 201));
+    background: linear-gradient(to right, rgb(66, 154, 255), rgb(1, 201, 124));
     font-family: Roboto;
 }
 
@@ -40,7 +40,7 @@ div{
     margin-left: 10px;
     height: 36px;
     border: none;
-    background-color: #0077ff;
+    background: linear-gradient(to right, rgb(86, 165, 255), rgb(1, 171, 201));
     color: white;
     cursor: pointer;
 }
