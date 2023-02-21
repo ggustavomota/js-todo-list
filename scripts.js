@@ -80,7 +80,34 @@ function Add(){
         tasklist.unshift()
     })
 
-    edit.addEventListener('click', function(){
+    var newinput = document.createElement('input')
+    newinput.style.width = '220px'
+    newinput.style.height = '20px'
+    newinput.style.marginTopTop = '-10px'
+    newinput.style.marginRight = '10px'
+    newinput.style.border = 'none'
+    newinput.style.borderRadius = '3px'
+    newinput.style.backgroundColor = 'white'
 
+    var newclosebutton = document.createElement('button')
+    newclosebutton.style.height = '20px'
+    newclosebutton.style.borderRadius = '50%'
+    newclosebutton.style.backgroundColor = 'greenyellow'
+    newclosebutton.style.border = 'none'
+    newclosebutton.style.color = 'white'
+    newclosebutton.innerHTML = '✓'
+    newclosebutton.style.fontWeight = 'bold'
+    newclosebutton.style.cursor = 'pointer'
+
+    edit.addEventListener('click', function(){
+        task.innerHTML = ''
+        task.appendChild(newinput)
+        task.appendChild(newclosebutton)
+    })
+
+    newclosebutton.addEventListener('click', function(){
+        task.removeChild(newinput)
+        task.removeChild(newclosebutton)
+        task.innerHTML = String(newinput.value)
     })
 }
